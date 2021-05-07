@@ -1,9 +1,13 @@
+html {
+    background: linear-gradient(0deg, #79D2BF, #4062BF);
+    width: 100%;
+    height: 100%;
+}
 .TaskGroupList {
     color: white;
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
-    background-color: red;
 }
 
 .TaskGroupList > div {
