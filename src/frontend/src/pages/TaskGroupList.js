@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 
 function TaskGroupList() {
     const [taskGroupList, setTaskGroupList] = useState([]);
-    useEffect(function () {
+    useEffect( () => {
         fetch("http://localhost:8080/taskGroup")
             .then(res => res.json())
             .then(json => setTaskGroupList(json.map(el => el.name)));
