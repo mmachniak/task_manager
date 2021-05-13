@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -42,7 +43,17 @@ public class TaskGroupController {
 
     @GetMapping("/even/{n}")
     public List<Integer> getEvenList(@PathVariable Integer n) {
-        return null;
+        List<Integer> odd = new ArrayList<>();
+        int i = 0;
+        int x = 0;
+        while(i<n){
+            if(x%2==1) {
+                odd.add(x);
+                i++;
+            }
+            x++;
+        }
+        return odd;
     }
 
 
