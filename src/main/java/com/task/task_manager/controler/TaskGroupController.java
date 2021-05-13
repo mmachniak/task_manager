@@ -16,7 +16,7 @@ public class TaskGroupController {
         taskGroups.add(new TaskGroup(1L, "Promocja Santander v2"));
         taskGroups.add(new TaskGroup(2L, "Promocja GetIn"));
         taskGroups.add(new TaskGroup(3L, "Promocja Milenium"));
-        taskGroups.add(new TaskGroup(3L, "Promocja Milenium 3"));
+        taskGroups.add(new TaskGroup(5L, "Promocja Milenium 3"));
     }
 
     @GetMapping("/taskGroup")
@@ -26,6 +26,9 @@ public class TaskGroupController {
 
     @GetMapping("/taskGroup/{id}")
     public TaskGroup getTaskGroup(@PathVariable Long id) {
+        for (TaskGroup taskGroup : taskGroups) {
+            if (taskGroup.getId().equals(id)) return taskGroup;
+        }
         //zwrocic obiekt po id
         return null;
     }
@@ -33,8 +36,12 @@ public class TaskGroupController {
 
     @DeleteMapping("/taskGroup/{id}")
     public void deleteTaskGroup(@PathVariable Long id) {
+        for (int i = 0; i < taskGroups.size(); i++){
+            if (taskGroups.get(i).getId().equals(id)) taskGroups.remove(i);
+        }
         //usunac na podstawie id
     }
+
 
 
 
