@@ -5,8 +5,9 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 @RestController
 @CrossOrigin
@@ -43,17 +44,21 @@ public class TaskGroupController {
 
     @GetMapping("/even/{n}")
     public List<Integer> getEvenList(@PathVariable Integer n) {
-        List<Integer> odd = new ArrayList<>();
-        int i = 0;
-        int x = 0;
-        while(i<n){
-            if(x%2==1) {
-                odd.add(x);
-                i++;
-            }
-            x++;
-        }
-        return odd;
+        return IntStream.iterate(1, i -> i + 2)
+                .limit(n).boxed()
+                .collect(Collectors.toList());
+
+//        List<Integer> odd = new ArrayList<>();
+//        int i = 0;
+//        int x = 0;
+//        while (i < n) {
+//            if (x % 2 == 1) {
+//                odd.add(x);
+//                i++;
+//            }
+//            x++;
+//        }
+//        return odd;
     }
 
 
