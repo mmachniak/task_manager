@@ -58,7 +58,12 @@ public class TaskGroupController {
         //usunac na podstawie id
     }
 
+//zadanie sworzyć endpoint który zwróci pierwsze n liczby nieprzystych
 
+    @GetMapping("/even/{n}")
+    public List<Integer> getEvenList(@PathVariable Integer n) {
+        return null;
+    }
 
 
 }
