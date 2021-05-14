@@ -1,12 +1,21 @@
 package com.task.task_manager.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class TaskGroup {
 
+    @Id
+    @GeneratedValue
     private Long id;
     private String name;
 
-    public TaskGroup(Long id, String name) {
-        this.id = id;
+    protected TaskGroup() {
+    }
+
+    public TaskGroup(String name) {
         this.name = name;
     }
 
