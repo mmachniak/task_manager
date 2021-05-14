@@ -1,6 +1,6 @@
-package com.task.task_manager.auth;
+package com.task.taskmanager.auth;
 
-import com.task.task_manager.repository.UserRepository;
+import com.task.taskmanager.repository.UserRepository;
 import org.springframework.http.HttpHeaders;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -49,8 +49,7 @@ public class JwtTokenFilter extends OncePerRequestFilter {
                 .findByUsername(jwtTokenUtil.getUsername(token))
                 .orElse(null);
 
-        UsernamePasswordAuthenticationToken
-                authentication = new UsernamePasswordAuthenticationToken(
+        var authentication = new UsernamePasswordAuthenticationToken(
                 userDetails, null,
                 userDetails == null ?
                         List.of() : userDetails.getAuthorities()

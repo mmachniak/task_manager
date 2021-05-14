@@ -1,6 +1,6 @@
-package com.task.task_manager.auth;
+package com.task.taskmanager.auth;
 
-import com.task.task_manager.repository.UserRepository;
+import com.task.taskmanager.repository.UserRepository;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;

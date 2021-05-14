@@ -1,4 +1,4 @@
-package com.task.task_manager;
+package com.task.taskmanager;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

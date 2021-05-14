@@ -1,7 +1,7 @@
-package com.task.task_manager.controler;
+package com.task.taskmanager.controler;
 
-import com.task.task_manager.entity.TaskGroup;
-import com.task.task_manager.service.TaskGroupServiceImpl;
+import com.task.taskmanager.entity.TaskGroup;
+import com.task.taskmanager.service.TaskGroupServiceImpl;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;

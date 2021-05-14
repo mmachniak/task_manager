@@ -1,6 +1,6 @@
-package com.task.task_manager.auth;
+package com.task.taskmanager.auth;
 
-import com.task.task_manager.entity.User;
+import com.task.taskmanager.entity.User;
 import io.jsonwebtoken.*;
 import org.springframework.stereotype.Component;
 

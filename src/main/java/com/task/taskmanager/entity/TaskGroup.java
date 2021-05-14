@@ -1,4 +1,4 @@
-package com.task.task_manager.entity;
+package com.task.taskmanager.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;

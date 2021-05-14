@@ -1,7 +1,7 @@
-package com.task.task_manager.service;
+package com.task.taskmanager.service;
 
-import com.task.task_manager.entity.TaskGroup;
-import com.task.task_manager.repository.TaskGroupRepository;
+import com.task.taskmanager.entity.TaskGroup;
+import com.task.taskmanager.repository.TaskGroupRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
