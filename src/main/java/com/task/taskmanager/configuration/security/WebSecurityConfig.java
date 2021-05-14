@@ -18,53 +18,53 @@ import javax.servlet.http.HttpServletResponse;
 
 @EnableWebSecurity
 @EnableGlobalMethodSecurity(
-        securedEnabled = true,
-        jsr250Enabled = true,
-        prePostEnabled = true
+    securedEnabled = true,
+    jsr250Enabled = true,
+    prePostEnabled = true
 )
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-    private final UserDetailsService userDetailsService;
-    private final JwtTokenFilter jwtTokenFilter;
+  private final UserDetailsService userDetailsService;
+  private final JwtTokenFilter jwtTokenFilter;
 
-    public WebSecurityConfig(UserDetailsService userDetailsService, JwtTokenFilter jwtTokenFilter) {
-        this.userDetailsService = userDetailsService;
-        this.jwtTokenFilter = jwtTokenFilter;
-    }
+  public WebSecurityConfig(UserDetailsService userDetailsService, JwtTokenFilter jwtTokenFilter) {
+    this.userDetailsService = userDetailsService;
+    this.jwtTokenFilter = jwtTokenFilter;
+  }
 
-    @Override
-    @Bean
-    public AuthenticationManager authenticationManagerBean() throws Exception {
-        return super.authenticationManagerBean();
-    }
+  @Override
+  @Bean
+  public AuthenticationManager authenticationManagerBean() throws Exception {
+    return super.authenticationManagerBean();
+  }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(userDetailsService)
-                .passwordEncoder(NoOpPasswordEncoder.getInstance());
-    }
+  @Override
+  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+    auth.userDetailsService(userDetailsService)
+        .passwordEncoder(NoOpPasswordEncoder.getInstance());
+  }
 
-    @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.cors().and().csrf().disable()
-                .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                .exceptionHandling()
-                .authenticationEntryPoint(
-                        (request, response, ex) -> response.sendError(
-                                HttpServletResponse.SC_UNAUTHORIZED,
-                                ex.getMessage()
-                        )
-                )
-                .and()
-                .authorizeRequests()
-                .antMatchers("/auth/**").permitAll()
-                .anyRequest().authenticated().and()
-                .addFilterBefore(
-                        jwtTokenFilter,
-                        UsernamePasswordAuthenticationFilter.class
-                );
-    }
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.cors().and().csrf().disable()
+        .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+        .exceptionHandling()
+        .authenticationEntryPoint(
+            (request, response, ex) -> response.sendError(
+                HttpServletResponse.SC_UNAUTHORIZED,
+                ex.getMessage()
+            )
+        )
+        .and()
+        .authorizeRequests()
+        .antMatchers("/auth/**").permitAll()
+        .anyRequest().authenticated().and()
+        .addFilterBefore(
+            jwtTokenFilter,
+            UsernamePasswordAuthenticationFilter.class
+        );
+  }
 
 //    @Bean
 //    public GrantedAuthorityDefaults grantedAuthorityDefaults() {

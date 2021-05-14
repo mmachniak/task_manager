@@ -9,22 +9,22 @@ import java.util.List;
 @Service
 public class TaskGroupServiceImpl {
 
-    private TaskGroupRepository repository;
+  private final TaskGroupRepository repository;
 
-    public TaskGroupServiceImpl(TaskGroupRepository repository) {
-        this.repository = repository;
-    }
+  public TaskGroupServiceImpl(TaskGroupRepository repository) {
+    this.repository = repository;
+  }
 
-    public List<TaskGroup> findTaskGroups() {
-        return repository.findAll();
-    }
+  public List<TaskGroup> findTaskGroups() {
+    return repository.findAll();
+  }
 
-    public TaskGroup findTaskGroup(Long id) {
-        return repository.getOne(id);
-    }
+  public TaskGroup findTaskGroup(Long id) {
+    return repository.getOne(id);
+  }
 
-    public void deleteTaskGroup(Long id) {
-        repository.deleteById(id);
-    }
+  public void deleteTaskGroup(Long id) {
+    repository.deleteById(id);
+  }
 
 }
