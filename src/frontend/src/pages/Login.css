@@ -1,0 +1,19 @@
+.Login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:100vh;
+}
+
+.login-form {
+    min-width: 200px;
+    padding: 20px;
+    border: black 1px solid;
+    border-radius: 20px;
+    background: gray;
+}
+
+.btn {
+    text-align: center;
+
+}

@@ -2,6 +2,7 @@ import './TaskGroupList.css';
 import {Button, Form, Input} from "antd";
 import {UserOutlined, LockOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
+import './Login.css';
 import {useState} from "react";
 import {Redirect} from "react-router-dom";
 
@@ -26,8 +27,8 @@ function Login() {
     }
 
     return (
-        <>
-            {redirect ? <Redirect /> : null}
+        <div className="Login">
+            {redirect ? <Redirect/> : null}
             <Form name="normal_login" className="login-form" onFinish={onFinish}>
                 <Form.Item name="username"
                            rules={[{required: true, message: "Please input your UserName!"}]}>
@@ -42,14 +43,13 @@ function Login() {
                         placeholder="Password"
                     />
                 </Form.Item>
-                <Form.Item>
+                <Form.Item className="btn">
                     <Button type="primary" htmlType="submit" className="login-form-button">
                         Log in
                     </Button>
-                    {/*Or <a href="">register now!</a>*/}
                 </Form.Item>
             </Form>
-        </>
+        </div>
     );
 }
 
