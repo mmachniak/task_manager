@@ -1,25 +1,26 @@
 import './App.css';
+import TaskGroupList from "./pages/TaskGroupList";
+import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
+import Login from "./pages/Login";
+import {ErrorHandler} from "./components/ErrorHandler";
 
 function App() {
-  return (
-    <div className="App">
-      Elo elo 320 asdas
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-    </div>
-  );
+    return (
+        <div className="App">
+            <Router>
+                <ErrorHandler>
+                    <Switch>
+                        <Route exac path="/login">
+                            <Login/>
+                        </Route>
+                        <Route path="/">
+                            <TaskGroupList/>
+                        </Route>
+                    </Switch>
+                </ErrorHandler>
+            </Router>
+        </div>
+    );
 }
 
 export default App;
