@@ -1,17 +1,22 @@
 import './TaskGroupList.css';
 import Tile from '../components/Tile';
-import {useQuery} from "../util/query";
+import axiosApiInstance from "../util/axiosApiInstance";
+import {useEffect, useState} from "react";
 
 
 function TaskGroupList() {
-    const {data} = useQuery("http://localhost:8080/taskGroup", []);
-    console.log(data);
+    const [data, setData] = useState([]);
+    useEffect(() => {
+        axiosApiInstance.get("taskGroup").then(json => {
+            setData(json);
+        })
+    }, []);
     return (
-      <div className="TaskGroupList">
-          {data.map(item => item.name).map(item => <Tile text={item}/>)}
-        <Tile text="+"/>
-      </div>
+        <div className="TaskGroupList">
+            {data.map(item => <Tile key={item.id} text={item.name}/>)}
+            <Tile text="+"/>
+        </div>
     );
-  }
-  
-  export default TaskGroupList;
+}
+
+export default TaskGroupList;
