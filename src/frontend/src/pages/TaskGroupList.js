@@ -9,11 +9,16 @@ function TaskGroupList() {
     useEffect(() => {
         axiosApiInstance.get("taskGroup").then(json => {
             setData(json);
-        })
-    }, []);
+        });
+    }, [setData]);
+    const deleteFunction = (id) => {
+        return () => axiosApiInstance.delete(`taskGroup/${id}`)
+            .then(() => setData(data.filter(value => value.id !== id)));
+    };
+
     return (
         <div className="TaskGroupList">
-            {data.map(item => <Tile key={item.id} text={item.name}/>)}
+            {data.map(item => <Tile key={item.id} text={item.name} deleteFunction={deleteFunction(item.id)}/>)}
             <Tile text="+"/>
         </div>
     );
