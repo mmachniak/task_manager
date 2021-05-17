@@ -49,6 +49,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     http.cors().and().csrf().disable()
         .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
+        .headers().frameOptions().sameOrigin()
+        .and()
         .exceptionHandling()
         .authenticationEntryPoint(
             (request, response, ex) -> response.sendError(
@@ -59,6 +61,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .and()
         .authorizeRequests()
         .antMatchers("/auth/**").permitAll()
+        .antMatchers("/h2-console/**").permitAll()
+        .antMatchers("/favicon.ico").permitAll()
         .anyRequest().authenticated().and()
         .addFilterBefore(
             jwtTokenFilter,

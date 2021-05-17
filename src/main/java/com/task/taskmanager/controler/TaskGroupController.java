@@ -1,7 +1,9 @@
 package com.task.taskmanager.controler;
 
+import com.task.taskmanager.entity.Task;
 import com.task.taskmanager.entity.TaskGroup;
 import com.task.taskmanager.service.TaskGroupServiceImpl;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,6 +32,13 @@ public class TaskGroupController {
   @DeleteMapping("/taskGroup/{id}")
   public void deleteTaskGroup(@PathVariable Long id) {
     service.deleteTaskGroup(id);
+  }
+
+  @Transactional
+  @GetMapping("/taskGroup/{id}/task")
+  public List<Task> getTasks(@PathVariable Long id) {
+    TaskGroup taskGroup = service.findTaskGroup(id);
+    return taskGroup.getTasks();
   }
 
 }

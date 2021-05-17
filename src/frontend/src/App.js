@@ -4,6 +4,7 @@ import {Switch, BrowserRouter as Router, Route} from "react-router-dom";
 import Login from "./pages/Login";
 import {ErrorHandler} from "./components/ErrorHandler";
 import WithAxios from "./util/WithAxios";
+import TaskList from "./pages/TaskList";
 
 function App() {
     return (
@@ -14,6 +15,12 @@ function App() {
                         <Switch>
                             <Route exac path="/login">
                                 <Login/>
+                            </Route>
+                            <Route path="/taskGroup/:id/tasks">
+                                <TaskList/>
+                            </Route>
+                            <Route path="/taskGroups">
+                                <TaskGroupList/>
                             </Route>
                             <Route path="/">
                                 <TaskGroupList/>

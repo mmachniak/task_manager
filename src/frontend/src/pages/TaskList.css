@@ -1,0 +1,14 @@
+.TaskList {
+    color: white;
+    max-width: 400px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.TaskList > div {
+    background-color: black;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 250px;
+    margin: 20px auto;
+}
