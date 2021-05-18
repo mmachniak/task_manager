@@ -2,11 +2,10 @@ package com.task.taskmanager.controler;
 
 import com.task.taskmanager.auth.JwtTokenUtil;
 import com.task.taskmanager.dto.AuthRequest;
-import com.task.taskmanager.dto.UserDto;
+import com.task.taskmanager.dto.AuthResponse;
 import com.task.taskmanager.entity.User;
 import com.task.taskmanager.mapper.StructMapper;
 import javax.validation.Valid;
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -35,7 +34,7 @@ public class AuthenticationController {
   }
 
   @PostMapping("login")
-  public ResponseEntity<UserDto> login(@RequestBody @Valid AuthRequest request) {
+  public ResponseEntity<AuthResponse> login(@RequestBody @Valid AuthRequest request) {
     try {
       var authenticate = authenticationManager
           .authenticate(
@@ -45,10 +44,11 @@ public class AuthenticationController {
           );
 
       var user = (User) authenticate.getPrincipal();
-
+      AuthResponse authResponse = mapper.toAuthResponse(user);
+      authResponse.setToken(jwtTokenUtil.generateAccessToken(user));
       return ResponseEntity.ok()
-          .header(HttpHeaders.AUTHORIZATION, jwtTokenUtil.generateAccessToken(user))
-          .body(mapper.toUserDto(user));
+          .body(authResponse);
+
     } catch (BadCredentialsException ex) {
       return ResponseEntity.status(HttpStatus.UNAUTHORIZED).build();
     }

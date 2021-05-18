@@ -1,29 +1,22 @@
 import './TaskGroupList.css';
 import {Button, Form, Input} from "antd";
-import {UserOutlined, LockOutlined} from '@ant-design/icons';
+import {LockOutlined, UserOutlined} from '@ant-design/icons';
 import 'antd/dist/antd.css';
 import './Login.css';
 import {useState} from "react";
 import {Redirect} from "react-router-dom";
+import axiosApiInstance from '../util/axiosApiInstance';
 
 function Login() {
 
     const [redirect, setRedirect] = useState(false);
 
     const onFinish = values => {
-        async function responseBody() {
-            const response = await fetch("http://localhost:8080/auth/login",
-                {
-                    method: 'POST', body: JSON.stringify(values), headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-            localStorage.setItem('token', response.headers.get("Authorization"));
-            setRedirect(true);
-            return response.json();
-        }
-
-        return responseBody();
+        axiosApiInstance.post("auth/login", JSON.stringify(values))
+            .then(json => {
+                localStorage.setItem('token', json.token);
+                setRedirect(true);
+            });
     }
 
     return (
