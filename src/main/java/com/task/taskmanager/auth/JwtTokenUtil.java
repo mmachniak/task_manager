@@ -9,8 +9,8 @@ import java.util.Date;
 @Component
 public class JwtTokenUtil {
 
-  private final String jwtSecret = "zdtlD3JK56m6wTTgsNFhqzjqP";
-  private final String jwtIssuer = "example.io";
+  private static final String jwtSecret = "zdtlD3JK56m6wTTgsNFhqzjqP";
+  private static final String jwtIssuer = "example.io";
 
 
   public String generateAccessToken(User user) {
@@ -24,7 +24,7 @@ public class JwtTokenUtil {
   }
 
   public String getUserId(String token) {
-    Claims claims = Jwts.parser()
+    var claims = Jwts.parser()
         .setSigningKey(jwtSecret)
         .parseClaimsJws(token)
         .getBody();
@@ -33,7 +33,7 @@ public class JwtTokenUtil {
   }
 
   public String getUsername(String token) {
-    Claims claims = Jwts.parser()
+    var claims = Jwts.parser()
         .setSigningKey(jwtSecret)
         .parseClaimsJws(token)
         .getBody();
@@ -42,7 +42,7 @@ public class JwtTokenUtil {
   }
 
   public Date getExpirationDate(String token) {
-    Claims claims = Jwts.parser()
+    var claims = Jwts.parser()
         .setSigningKey(jwtSecret)
         .parseClaimsJws(token)
         .getBody();

@@ -44,7 +44,7 @@ public class AuthenticationController {
           );
 
       var user = (User) authenticate.getPrincipal();
-      AuthResponse authResponse = mapper.toAuthResponse(user);
+      var authResponse = mapper.toAuthResponse(user);
       authResponse.setToken(jwtTokenUtil.generateAccessToken(user));
       return ResponseEntity.ok()
           .body(authResponse);

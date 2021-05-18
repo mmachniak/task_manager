@@ -37,7 +37,7 @@ public class TaskGroupController {
   @Transactional
   @GetMapping("/taskGroup/{id}/task")
   public List<Task> getTasks(@PathVariable Long id) {
-    TaskGroup taskGroup = service.findTaskGroup(id);
+    var taskGroup = service.findTaskGroup(id);
     return taskGroup.getTasks();
   }
 
