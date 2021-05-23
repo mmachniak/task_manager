@@ -42,8 +42,16 @@ public class TaskGroupController {
   @Transactional
   @GetMapping("/taskGroup/{id}/task")
   public List<Task> getTasks(@PathVariable Long id) {
-    var taskGroup = service.findTaskGroup(id);
+    TaskGroup taskGroup = service.findTaskGroup(id);
     return taskGroup.getTasks();
+  }
+
+  @Transactional
+  @PostMapping("/taskGroup/{id}/task")
+  public void addTask(@PathVariable Long id, @RequestBody Task task) {
+//    TaskGroup taskGroup = service.findTaskGroup(id);
+//    taskGroup.getTasks().add(task);
+    System.out.println(task.getDescription());
   }
 
 }
