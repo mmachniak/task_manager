@@ -1,17 +1,17 @@
 INSERT INTO TASK_GROUP(ID, NAME)
-VALUES (1, 'Promocja Santander DB');
+VALUES (1000, 'Promocja Santander DB');
 INSERT INTO TASK_GROUP(ID, NAME)
-VALUES (2, 'Promocja Getin DB');
+VALUES (2000, 'Promocja Getin DB');
 INSERT INTO TASK_GROUP(ID, NAME)
-VALUES (3, 'Promocja Millenium DB');
+VALUES (3000, 'Promocja Millenium DB');
 
 INSERT INTO TASK(ID, DESCRIPTION, DONE, TASK_GROUP_ID)
-VALUES (1, '3 przelewy', false, 1);
+VALUES (1000, '3 przelewy', false, 1000);
 INSERT INTO TASK(ID, DESCRIPTION, DONE, TASK_GROUP_ID)
-VALUES (2, '3 blik', false, 1);
+VALUES (2000, '3 blik', false, 1000);
 INSERT INTO TASK(ID, DESCRIPTION, DONE, TASK_GROUP_ID)
-VALUES (3, '300 zł w miesiacu', false, 1);
+VALUES (3000, '300 zł w miesiacu', false, 1000);
 
 
 INSERT INTO USER(ID, USERNAME, PASSWORD)
-VALUES (1, 'mmachniak', 'password');
+VALUES (1000, 'mmachniak', 'password');

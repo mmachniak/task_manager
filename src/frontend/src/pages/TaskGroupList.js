@@ -25,7 +25,7 @@ function TaskGroupList() {
     return (
         <div className="TaskGroupList">
             {data.map(item => <Tile key={item.id} text={item.name} deleteFunction={deleteFunction(item.id)} onClick={navigateToTaskList(item.id)}/>)}
-            <Tile text="+"/>
+            <Tile text="+" onClick={() => history.push('/addTaskGroup')}/>
         </div>
     );
 }

@@ -28,6 +28,11 @@ public class TaskGroupController {
     return service.findTaskGroup(id);
   }
 
+  @PostMapping("/taskGroup")
+  public void addTaskGroup(@RequestBody TaskGroup taskGroup) {
+    service.createTaskGroup(taskGroup);
+  }
+
 
   @DeleteMapping("/taskGroup/{id}")
   public void deleteTaskGroup(@PathVariable Long id) {

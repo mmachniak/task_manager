@@ -3,7 +3,6 @@ import './Tile.css';
 
 function Tile({text, deleteFunction, onClick}) {
     let deleteElementFunction = (event) => {
-        console.log(event);
         event.stopPropagation();
         deleteFunction();
     };

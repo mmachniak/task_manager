@@ -4,6 +4,7 @@ import {Route, Switch} from "react-router-dom";
 import Login from "./pages/Login";
 import TaskList from "./pages/TaskList";
 import Layout from "./components/Layout";
+import AddTaskGroup from './pages/AddTaskGroup';
 
 function App() {
     return (
@@ -18,6 +19,9 @@ function App() {
                     </Route>
                     <Route path="/taskGroups">
                         <TaskGroupList/>
+                    </Route>
+                    <Route path="/addTaskGroup">
+                        <AddTaskGroup/>
                     </Route>
                     <Route path="/">
                         <TaskGroupList/>
