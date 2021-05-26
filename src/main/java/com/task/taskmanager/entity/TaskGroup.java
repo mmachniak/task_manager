@@ -3,10 +3,7 @@ package com.task.taskmanager.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 
 @Entity
 public class TaskGroup {
@@ -18,7 +15,7 @@ public class TaskGroup {
   private String name;
 
   @JsonIgnore
-  @OneToMany(mappedBy = "taskGroup", orphanRemoval = true)
+  @OneToMany(mappedBy = "taskGroup", cascade = CascadeType.ALL, orphanRemoval = true)
   private List<Task> tasks = new ArrayList<>();
 
   protected TaskGroup() {

@@ -5,6 +5,7 @@ import Login from "./pages/Login";
 import TaskList from "./pages/TaskList";
 import Layout from "./components/Layout";
 import AddTaskGroup from './pages/AddTaskGroup';
+import AddTask from './pages/AddTask';
 
 function App() {
     return (
@@ -22,6 +23,9 @@ function App() {
                     </Route>
                     <Route path="/addTaskGroup">
                         <AddTaskGroup/>
+                    </Route>
+                    <Route path="/addTask/:id">
+                        <AddTask/>
                     </Route>
                     <Route path="/">
                         <TaskGroupList/>

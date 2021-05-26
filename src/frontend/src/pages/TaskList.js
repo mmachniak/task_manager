@@ -2,13 +2,15 @@ import './TaskGroupList.css';
 import Tile from '../components/Tile';
 import axiosApiInstance from "../util/axiosApiInstance";
 import {useEffect, useState} from "react";
-import {useParams} from 'react-router-dom';
+import {useParams, useHistory} from 'react-router-dom';
 import './TaskList.css';
 
 
 function TaskList() {
     const [data, setData] = useState([]);
     const {id : taskGroupId} = useParams();
+    let history = useHistory();
+
     useEffect(() => {
         axiosApiInstance.get(`taskGroup/${taskGroupId}/task`).then(json => {
             setData(json);
@@ -22,7 +24,7 @@ function TaskList() {
     return (
         <div className="TaskList">
             {data.map(item => <Tile key={item.id} text={item.description} deleteFunction={deleteFunction(item.id)}/>)}
-            <Tile text="+"/>
+            <Tile text="+" onClick = {()=>history.push('/addTask/' + taskGroupId)}/>
         </div>
     );
 }

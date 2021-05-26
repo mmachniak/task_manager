@@ -49,8 +49,9 @@ public class TaskGroupController {
   @Transactional
   @PostMapping("/taskGroup/{id}/task")
   public void addTask(@PathVariable Long id, @RequestBody Task task) {
-//    TaskGroup taskGroup = service.findTaskGroup(id);
-//    taskGroup.getTasks().add(task);
+    TaskGroup taskGroup = service.findTaskGroup(id);
+    taskGroup.getTasks().add(task);
+    task.setTaskGroup(taskGroup);
     System.out.println(task.getDescription());
   }
 
