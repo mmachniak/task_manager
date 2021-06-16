@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class AuthenticationControllerTest {
+class AuthenticationControllerIT {
 
   @Autowired
   private TestRestTemplate restTemplate;
