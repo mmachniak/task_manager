@@ -8,9 +8,9 @@ function AddTask() {
     let history = useHistory();
     const {id} = useParams();
     function addTask(jsonObject) {
-        axiosApiInstance.post("taskGroup/" + id + "/task", jsonObject)
+        axiosApiInstance.post(`taskGroup/${id}/task`, jsonObject)
             .then(json => {
-                history.push("/taskGroup/" + id + "/tasks");
+                history.push(`/taskGroup/${id}/tasks`);
             });
     }
     return (

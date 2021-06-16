@@ -23,8 +23,8 @@ public class TaskGroupServiceImpl {
     return repository.getOne(id);
   }
 
-  public void createTaskGroup(TaskGroup taskGroup) {
-    repository.save(taskGroup);
+  public TaskGroup createTaskGroup(TaskGroup taskGroup) {
+    return repository.save(taskGroup);
   }
 
   public void deleteTaskGroup(Long id) {

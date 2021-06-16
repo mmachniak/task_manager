@@ -29,8 +29,8 @@ public class TaskGroupController {
   }
 
   @PostMapping("/taskGroup")
-  public void addTaskGroup(@RequestBody TaskGroup taskGroup) {
-    service.createTaskGroup(taskGroup);
+  public TaskGroup addTaskGroup(@RequestBody TaskGroup taskGroup) {
+    return service.createTaskGroup(taskGroup);
   }
 
 
